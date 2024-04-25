@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { userSelector } from "../redux-store/users/selector";
 import UpdateModal from "../components/UpdateModal";
 import { resetAuthorAndQuote } from "../redux-store/users";
+import classNames from "classnames";
 
 export default function Profile() {
   const [show, setShow] = useState<boolean>(false);
@@ -32,7 +33,7 @@ export default function Profile() {
   }
 
   return (
-    <div>
+    <div className={classNames({ loading: isLoading })}>
       <Stack direction="horizontal" gap={4} className="mb-2">
         <div className="img-profile">
           <Image src={owl} roundedCircle alt="Profile" width={100} />

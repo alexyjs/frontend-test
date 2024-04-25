@@ -4,6 +4,7 @@ import { getCompanyInfo } from "../redux-store/company/thunk";
 import { useSelector } from "react-redux";
 import { companySelector } from "../redux-store/company/selector";
 import DOMPurify from "dompurify";
+import classNames from "classnames";
 
 export default function AboutUs() {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ export default function AboutUs() {
   }, [dispatch]);
   const cleanInfo = DOMPurify.sanitize(info || "");
   return (
-    <div>
+    <div className={classNames({ loading: isLoading })}>
       <h4 dangerouslySetInnerHTML={{ __html: cleanInfo }}></h4>
     </div>
   );
