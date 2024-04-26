@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LOCAL_STORAGE_KEY } from "../constants";
 
 
 const axiosService = axios.create({
@@ -12,8 +13,8 @@ axiosService.interceptors.response.use(
   function (error) {
     const { response } = error;
     const status = response?.status;
-
-    if (status === 401 || status === 403) {
+    const token = localStorage.getItem(LOCAL_STORAGE_KEY.TOKEN)
+    if (token && (status === 401 || status === 403)) {
       localStorage.clear();
       window.location.reload()
     }

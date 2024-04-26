@@ -25,7 +25,7 @@ const schema = yup
 
 export default function SignIn() {
   const nav = useNavigate();
-  const { isLoading } = useSelector(userSelector);
+  const { isLoading, error } = useSelector(userSelector);
   const dispatch = useAppDispatch();
   const {
     register,
@@ -47,6 +47,11 @@ export default function SignIn() {
 
   return (
     <div>
+      {error && (
+        <Form.Text className="text-danger">
+          Email or password is not correct!
+        </Form.Text>
+      )}
       <Form.Group className="mb-3" controlId="EmailInput">
         <Form.Label>Email</Form.Label>
         <Form.Control
