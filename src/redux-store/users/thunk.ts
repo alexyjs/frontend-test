@@ -150,7 +150,7 @@ const getQuoteBuilder = (builder: ActionReducerMapBuilder<UsersState>) => {
     state.quote = action.payload.data
   })
   builder.addCase(getQuote.rejected, (state, action) => {
-    state.quoteStatus = 'Falier';
+    state.quoteStatus = 'Failed';
     state.error = action.payload as string
   })
 }
